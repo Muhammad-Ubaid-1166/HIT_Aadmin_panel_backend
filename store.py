@@ -3,9 +3,12 @@ import redis
 import json
 from datetime import datetime
 from typing import List
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # ─── Redis Connection ─────────────────────────────────────────────────
-REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+REDIS_URL = os.getenv("REDIS_URL")
 r = redis.Redis.from_url(REDIS_URL, decode_responses=True)
 
 def _key(thread_id: str) -> str:
